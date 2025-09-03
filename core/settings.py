@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-c9mv%9$^wp$&(djx4n)xw61w%vh&-xe#i*xd*-%b2!i*723-^z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users'
+    'users',
+    'customers',
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -101,13 +104,63 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# CRONJOBS = [
+#     # Har kuni soat 11:00 da ishlaydi
+#     ('01 * * *', 'django.core.management.call_command', ['fetch_api']),
+# ]
+CRONJOBS = [
+    # Har kuni soat 02:00 da ishlash uchun
+    ('55 15 * * *', 'django.core.management.call_command', ['fetch_api'], '> /home/bobomurod/Django/Hemis_backend/logs/fetch_api.log 2>&1'),
+]
+
+
+LOG_DIR = os.path.join(BASE_DIR, 'logs')  # BASE_DIR — Django loyihangiz asosiy papkasi
+os.makedirs(LOG_DIR, exist_ok=True)
+
+# Logging sozlamalari
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s - %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'fetch_api.log'),
+            'when': 'midnight',       # har kun yangilanadi
+            'backupCount': 7,         # oxirgi 7 kun log saqlanadi
+            'formatter': 'verbose',
+            'encoding': 'utf-8',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'api_fetcher': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -130,3 +183,7 @@ import os
 HEMIS_CLIENT_ID = os.getenv("HEMIS_CLIENT_ID")
 HEMIS_CLIENT_SECRET = os.getenv("HEMIS_CLIENT_SECRET")
 HEMIS_REDIRECT_URI = os.getenv("HEMIS_REDIRECT_URI")
+HEMIS_AUTH_URL = os.getenv("HEMIS_AUTH_URL")
+HEMIS_TOKEN_URL = os.getenv("HEMIS_TOKEN_URL")
+HEMIS_USERINFO_URL = os.getenv("HEMIS_USERINFO_URL")
+

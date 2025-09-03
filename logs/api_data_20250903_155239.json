@@ -1,0 +1,107 @@
+{
+  "success": true,
+  "error": null,
+  "data": {
+    "position": {
+      "Stajer-o‘qituvchi": 321,
+      "Assistent": 312,
+      "Katta o‘qituvchi": 215,
+      "Dotsent": 95,
+      "Professor": 31,
+      "Kafedra mudiri": 46
+    },
+    "gender": {
+      "Erkak": 227,
+      "Ayol": 793,
+      "Jami": 1020
+    },
+    "citizenship": {
+      "O‘zbekiston Respublikasi fuqarosi": 963,
+      "Xorijiy davlat fuqarosi": 55,
+      "Fuqaroligi yo‘q shaxslar": 2
+    },
+    "academic_degree": {
+      "Darajasiz": {
+        "Erkak": 174,
+        "Ayol": 659
+      },
+      "Fan nomzodi, PhD": {
+        "Erkak": 40,
+        "Ayol": 105
+      },
+      "Fan doktori, DSc": {
+        "Erkak": 13,
+        "Ayol": 29
+      }
+    },
+    "academic_rank": {
+      "Unvonsiz": {
+        "Erkak": 191,
+        "Ayol": 715
+      },
+      "Dotsent": {
+        "Erkak": 27,
+        "Ayol": 54
+      },
+      "Katta ilmiy xodim": {
+        "Erkak": 2,
+        "Ayol": 10
+      },
+      "Professor": {
+        "Erkak": 7,
+        "Ayol": 14
+      }
+    },
+    "direction": {
+      "Prorektor": 0,
+      "Dekan": 0,
+      "Kafedra mudiri": 46
+    },
+    "academic": {
+      "Darajali": 187,
+      "Darajasiz": 833
+    },
+    "age": {
+      "1. 30 yoshgacha": {
+        "Erkak": 39,
+        "Ayol": 149
+      },
+      "2. 30-35 yosh": {
+        "Erkak": 35,
+        "Ayol": 162
+      },
+      "3. 35-40 yosh": {
+        "Erkak": 20,
+        "Ayol": 144
+      },
+      "4. 40-45 yosh": {
+        "Erkak": 21,
+        "Ayol": 103
+      },
+      "5. 45-50 yosh": {
+        "Erkak": 29,
+        "Ayol": 75
+      },
+      "6. 50-55 yosh": {
+        "Erkak": 21,
+        "Ayol": 71
+      },
+      "7. 55-60 yosh": {
+        "Erkak": 15,
+        "Ayol": 38
+      },
+      "8. 60+ yosh": {
+        "Erkak": 47,
+        "Ayol": 51
+      }
+    },
+    "employment_form": {
+      "Asosiy ish joy": 1020,
+      "O‘rindoshlik (tashqi)": 154,
+      "Soatbay": 15,
+      "O‘rindoshlik (ichki-qo'shimcha)": 121,
+      "O‘rindoshlik (ichki-asosiy)": 148
+    }
+  },
+  "code": 200
+}

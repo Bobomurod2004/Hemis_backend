@@ -1,7 +1,9 @@
 # authapp/urls.py
 from django.urls import path
-from .views import hemis_callback
+from . import views
+
 
 urlpatterns = [
-    path("hemis/callback/", hemis_callback, name="hemis_callback"),
+    path("hemis/login/", views.hemis_login),
+    path("callback/hemis", views.hemis_callback),
 ]
